@@ -1,7 +1,11 @@
-#Dockerfile, image, container
+FROM python:3
 
-FROM python:3.8-slim-buster
-ADD . /python-flask
-WORKDIR /python-flask
-RUN pip install -r requirements.txt
+WORKDIR /usr/src/app
+
+COPY . . 
+
+RUN pip install --no-cache-dir -r requirements.txt 
+
+EXPOSE 5000
+
 CMD [ "python", "./myapp.py" ]
